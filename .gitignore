@@ -11,5 +11,3 @@
 .ruby-version
 /config/database.yml.example
 /config/secrets.yml.example
-/config/database.yml
-/config/secrets.yml
