@@ -8,6 +8,4 @@ class User < ActiveRecord::Base
          :trackable, 
          :validatable,
          :confirmable
-    
-    attr_accessor :username
 end
