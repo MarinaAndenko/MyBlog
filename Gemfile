@@ -20,5 +20,9 @@ group :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
+  gem 'cancancan',			'~> 1.3'
+  gem 'will_paginate',      '~> 3.1.0'
+  gem "uikit-sass-rails"
+  gem 'foundation-rails'
 end
 

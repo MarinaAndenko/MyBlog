@@ -7,7 +7,7 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   
-  config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :username ]
 
   config.case_insensitive_keys = [:username]
   #config.case_insensitive_keys = [ :email, :username ]

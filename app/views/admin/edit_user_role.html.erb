@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag "application" %>
+<h2>User list</h2>
+<%= form_for :users do |f| %>
+<table>
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Admin Role</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+  <% next if user == current_user %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td>
+        <%= hidden_field_tag('people2[]', user.email) %>
+        <%= check_box_tag("people[]", user.id, checked(user.role, "admin"))%>
+        <% end %>
+         </td>
+      </tr>
+  </tbody>
+</table>
+<%= will_paginate @users %>
+ <%= f.submit("Submit") %>
+<p><%= link_to 'Back', '/admin_panel' %></p>
+<% end %>

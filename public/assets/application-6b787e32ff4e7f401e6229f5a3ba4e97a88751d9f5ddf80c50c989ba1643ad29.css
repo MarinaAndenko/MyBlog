@@ -4,6 +4,10 @@
 
 @import "uikit/scss/uikit-mixins.scss";
 
+.field
+{
+	background: red;
+}
 
 @import "uikit/scss/uikit.scss";
 @import "uikit/scss/components/autocomplete.scss";
