@@ -1,29 +1,38 @@
 <%= stylesheet_link_tag "application" %>
+<%= stylesheet_link_tag 'style' %> 
+<div id="header-font"><h2 class="header-font">User list</h2></div>
 <h2>User list</h2>
-<%= form_for :users do |f| %>
-<table>
+<div class="my_field">
+<%= form_for :page, url: admin_panel_edit_user_role_path(@page,page: @page) do |f| %>
+<div class="my_table">
+<div class = "paginate"><%= will_paginate @users, class: "pager" %></div>
+<table class="table table-hover">
   <thead>
-  <tr>
+  <tr class="info">
     <th>Username</th>
     <th>Email</th>
     <th>Admin Role</th>
   </tr>
   </thead>
   <tbody>
+  <% i = 1%>
   <% @users.each do |user| %>
   <% next if user == current_user %>
-      <tr>
+      <tr class="active"> 
         <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td>
-        <%= hidden_field_tag('people2[]', user.email) %>
-        <%= check_box_tag("people[]", user.id, checked(user.role, "admin"))%>
+        <%= hidden_field_tag('people2[]', user.id) %>
+        <%= check_box_tag("people[]", user.id, user.admin?)%>
         <% end %>
          </td>
       </tr>
   </tbody>
 </table>
-<%= will_paginate @users %>
- <%= f.submit("Submit") %>
-<p><%= link_to 'Back', '/admin_panel' %></p>
+</div>
+  <div id = "button-center">
+    <div class="button-center" ><%= f.submit "Submit", class: "btn btn-info" %></div>
+  </div>
+<p class = "b"><%= link_to 'Back to Admin Panel', admin_path %></p>
 <% end %>
+</div>

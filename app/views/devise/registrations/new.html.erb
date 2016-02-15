@@ -1,35 +1,35 @@
-<%= stylesheet_link_tag "application" %>
-<h2>Sign up</h2>
-
+<%= stylesheet_link_tag    "foundation" %>
+<%= stylesheet_link_tag    "_settings" %>
+<%= javascript_include_tag "vendor/custom.modernizr" %>
+<%= stylesheet_link_tag 'style' %> 
+<div id="header-font"><h2 class="header-font">Sign up</h2></div>
+<div class="field-center">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="small-8 column" class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true  %>
+  <div class = "input-group">
+    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+  <%= f.text_field :username, autofocus: true, placeholder: "Username", id: "sizing-addon1", class: "form-control"  %>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email%>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+    <%= f.email_field :email, placeholder: "Email", class: "form-control"%>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm your password", class: "form-control" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <br>
+  <div id = "button-center">
+    <div class="button-center" ><%= f.submit "Start", class: "btn btn-info btn-lg" %></div>
   </div>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+

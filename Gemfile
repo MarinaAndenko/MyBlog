@@ -21,8 +21,12 @@ group :development do
   gem 'pry-nav'
   gem 'pry-rails'
   gem 'cancancan',			'~> 1.3'
-  gem 'will_paginate',      '~> 3.1.0'
+  gem 'will_paginate',  '~> 3.1.0'
   gem "uikit-sass-rails"
   gem 'foundation-rails'
+  gem "therubyracer"
+  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+  gem "twitter-bootstrap-rails"
+  gem 'bootstrap-sass', '~> 3.3.6'
 end
 

@@ -1,5 +1,6 @@
-<div class = "admin_panel">
-<%= render "home/form" %>
-<p> Admin panel </p>
-<p><%= link_to 'Edit users roles', 'admin_panel/edit_user_role' %> </p>
+<div id="header-font"><h2 class="header-font">Admin panel</h2></div>
+<div class="field-center">
+<div id = "button-center">
+<div class="button-center" ><%= button_to 'Edit users roles', admin_panel_edit_user_role_path, class: "btn btn-info btn-lg"  %> </div>
+</div>
 </div>

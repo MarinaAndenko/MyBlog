@@ -1,0 +1,16 @@
+<div class="small-menu collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav active">
+        <li><%= link_to "Create New Blog"%></li>
+        <li><%= link_to "New Article"%></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+      <% else %> 
+        <li><%= link_to "Sign In", new_user_session_path, :method => :get, style: "btn-info"  %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path, :method => :get, style: "btn-info"  %></li>
+        <% end %>
+          </ul>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+
