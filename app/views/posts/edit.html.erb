@@ -1,0 +1,33 @@
+<div id="header-font"><h2 class="header-font">Edit post</h2></div>
+<div class="my_field">
+	<%= form_for @post, url: post_path(@post) do |f| %>
+	<% if @post.errors.any? %>
+	<div id = "error_explanation">
+		<h2>
+			<%= pluralize(@post.errors.count, "error") %> prohibiten this post from being saved:
+		</h2>
+		<ul>
+			<% @post.errors.full_messages.each do |msg| %>
+			<li> <%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<p>
+		<%= f.label :name %><br>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :description %><br>
+		<%= f.text_area :description %>
+	</p>
+	<p>
+		<%= f.label :text %><br>
+		<%= f.text_area :text %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+	<% end %>
+<p><%= link_to 'Back', :back %></p>
+</div>

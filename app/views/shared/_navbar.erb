@@ -1,7 +1,11 @@
 <div class="small-menu collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav active">
-        <li><%= link_to "Create New Blog"%></li>
-        <li><%= link_to "New Article"%></li>
+        <li><%= link_to "My Blogs", user_blogs_path(current_user) if current_user != nil%></li>
+        <li><%= link_to "Create New Blog", new_blog_path %></li>
+        <li><%= link_to "Create New Post", new_post_path %></li>
+        <% if can? :manage, :all %>
+          <li><%= link_to "Admin Panel", admin_path%></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>

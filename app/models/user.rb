@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  #ROLES = %w[admin person].freeze
-   enum role:  
+  has_many :blogs
+  enum role:  
    {
       user: 'user',
       admin: 'admin'

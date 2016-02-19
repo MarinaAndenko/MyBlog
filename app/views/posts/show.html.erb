@@ -1,0 +1,21 @@
+<div id="header-font"><h2 class="header-font"><%= @post.name %></h2></div>
+<div class="my_field">
+<%= form_for @post do |f| %>
+<p>
+	<strong>Description:</strong>
+	<%= @post.description %>
+</p>
+<p>
+	<strong>Text:</strong>
+	<%= @post.text %>
+</p>
+<p>
+	<%= hidden_field_tag :blog_id, @post.blog_id %>
+<% end %>
+<% if can? :update && :edit && :destroy, @post%>
+	<%= link_to 'Edit', edit_post_path(@post) %>
+	<%= button_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+</p>
+<p><%= link_to 'Return to list of posts', blog_path(@post.blog_id) %></p>
+</div>

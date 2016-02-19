@@ -1,3 +1,3 @@
 //= require jquery
 //= require bootstrap-sprockets
-$(function(){ $(document).foundation(); });
+//= $(function(){ $(document).foundation(); });

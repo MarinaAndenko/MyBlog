@@ -1,0 +1,10 @@
+<div id="header-font"><h2 class="header-font">Welcome</h2></div>
+<div class="my_field">
+	<% @blogs.each do |blog|%>
+	<p>
+		<%= link_to blog.name, blog_path(blog) %><br>
+		<%= blog.description%>
+	</p>
+	<% end %>
+	<%= will_paginate @blogs, class: "pager" %>
+</div>
