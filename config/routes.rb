@@ -1,36 +1,22 @@
 Rails.application.routes.draw do
-  get 'posts/index'
 
+  resources :comments
+  resources :blogs
+  resources :posts
+  #resources :users, only: [:show, :edit, :update]
+  #get 'profile' => 'users#show'
+  #get 'profile/edit' => 'users#edit'
+  #post 'profile/edit' => 'users#update'
   devise_for :users
   get 'home' => 'home#index', as: :home
-  root to: 'home#index'
+  root to: 'blogs#index'
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+  resources :users, only: [:show, :edit, :update]
   get 'admin_panel' => 'admin#index' , as: :admin
   get 'admin_panel/edit_user_role' => 'admin#edit_user_role'
   post 'admin_panel/edit_user_role' => 'admin#edit_user_role'
-  #resources :blogs
-  #get 'my_blogs' => 'blogs#my_blogs'
-
-  #resources :users do
-  #  resources :blogs do
-  #    resources :posts do
-  #    end 
-  #  end
-  #end
-  #get 'user/:id(.:format)/blog' => 'blogs#index'
-
-  resources :users do
-    resources :blogs, only: [:index]
-  end
-
-  resources :blogs do
-    resources :posts, only: [:new, :create]
-  end 
-
-  resources :blogs
-  resources :posts
 
   
 end

@@ -1,9 +1,0 @@
-@import "uikit"; // Default Theme
-@import "uikit/gradient"; // Gradient Theme
-@import "uikit/almost-flat"; // Almost-Flat Theme
-
-@import "uikit/scss/uikit-mixins.scss";
-
-
-@import "uikit/scss/uikit.scss";
-@import "uikit/scss/components/autocomplete.scss";

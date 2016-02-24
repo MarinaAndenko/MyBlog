@@ -14,7 +14,13 @@ class Ability
         end
         can [:edit, :update, :destroy], Post do |post|
             post.try(:blog).try(:user) == user
-        end       
+        end
+        can :destroy, Comment do |comment|
+            comment.try(:user) == user
+        end 
+        can :edit, User do |user|
+            user.try(:user) == user
+        end
     else
         can :index, Blog do |blog|
             blog.try(:user) == user

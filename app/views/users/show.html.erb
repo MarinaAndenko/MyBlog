@@ -1,0 +1,41 @@
+<div class="my_field">
+<div class="panel panel-primary">
+  <div>
+    <h2 class="header-font"><%= @user.username%> profile</h2>
+  </div>
+  <div class="panel-body">
+  <p>
+    This this the personal page of <%= @user.username.capitalize %>
+  </p>
+  <p>
+    This user has <%= pluralize(@user.blogs.count, 'blog') if @user.blogs != nil%>
+  </p>
+  <p>
+  	This user has <%= pluralize(@q_posts, 'post') if @user.blogs != nil %>
+  </p>
+  <p>
+  	Account was created on <%= @user.created_at.strftime("%d %b. %Y") %>
+  </p>
+  <p>
+  	Last post was publised on <%= @last_post.created_at.strftime("%d %b. %Y at %H:%M") if @last_post != nil %>
+  </p>
+    <p>
+    <% if @user.information == nil %>
+    It's now personal information about user yet.<br>
+    Tell others some words about yourself..Start by clicking <%= link_to 'here', edit_user_path %>
+    <% else %>
+    	<%= @user.information %><br>
+    	<% if current_user.id == @user.id%>
+    	<%= link_to 'Edit', edit_user_path %>
+    	<% end %>
+    <% end %>
+  </p>
+  <p>
+  	<%= link_to ' To all blogs of this author', blogs_path(user_id: @user.id), class: "btn btn-default" %>
+  </p>
+  <div id = "comment-form" ><%= render partial: 'comments/comment_form' %></div>
+<h5 id="comments-count">This post has <%= pluralize(@commentable.comments.count, 'comment') %></h5>
+<div id="comments-list">
+  <%= render partial: @commentable.reload.comments.reverse %>
+</div>
+  </div>

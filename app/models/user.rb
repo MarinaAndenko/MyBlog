@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :blogs
+  has_many :blogs, dependent: :destroy
+  has_many :comments, as: :commentable
   enum role:  
    {
       user: 'user',

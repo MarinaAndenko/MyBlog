@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
+	require 'will_paginate/array' 
 	skip_before_action :authenticate_user!, :only => [:index]
+	load_and_authorize_resource
 
 	def index
 		@page = params[:page]
@@ -9,24 +11,20 @@ class BlogsController < ApplicationController
 	end
 
 	def show
-		#user = User.find(params[:user_id])
 		@blog = Blog.find(params[:id])
-		@user = User.find(@blog.user_id)
 		@page = params[:page]
-		@posts = @blog.posts.paginate(page: @page, :per_page => 10)
+		@posts = @blog.posts
+		@posts = @posts.paginate(page: @page, :per_page => 10)
 	end
 
 	def new
 		user = current_user
-		#user = User.find(params[:user_id])
 		@blog = user.blogs.new
 	end
 
 	def create
 		user = current_user
-		#user = User.find(params[:user_id])
 		@blog = user.blogs.create(blog_params)
-		#@blog = @user.blogs.create(blog_params)
 		if @blog.save
 			redirect_to blog_path(@blog)
 		else
@@ -35,16 +33,13 @@ class BlogsController < ApplicationController
 	end 
 
 	def edit
-		#user = User.find(params[:user_id])
 		@blog = Blog.find(params[:id])
 	end 
 
 	def update
-		#user = User.find(params[:user_id])
 		@blog = Blog.find(params[:id])
-		@posts = @blog.posts
 		if @blog.update(blog_params)
-			render 'show'
+			redirect_to @blog
 		else
 			render 'edit' 
 		end

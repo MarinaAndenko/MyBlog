@@ -1,21 +1,30 @@
-<div id="header-font"><h2 class="header-font"><%= @post.name %></h2></div>
+
 <div class="my_field">
-<%= form_for @post do |f| %>
-<p>
-	<strong>Description:</strong>
-	<%= @post.description %>
-</p>
-<p>
-	<strong>Text:</strong>
-	<%= @post.text %>
-</p>
-<p>
-	<%= hidden_field_tag :blog_id, @post.blog_id %>
-<% end %>
+<div class="panel panel-primary">
+  <div>
+    <h2 class="header-font"><%= @post.name %></h2>
+  </div>
+  <div class="panel-body">
+<div class="author attributes-f">
+  	Author <span class="badge attributes"><%= link_to @post.blog.user.username, user_path(@post.blog.user_id) %></span>
+  	<%= link_to ' To all posts', blog_path(@post.blog_id), class: "btn btn-default" %>
+  </div>
+
+  <div class="date attributes-f">
+  	Created <span class="badge attributes"><%= @post.created_at.strftime("%d %b. %Y at %H:%M") %></span>
+  </div>
+</div>
+<div class="panel-footer text"><%= @post.text %></div>
+</div>
+<div id = "comment-form" ><%= render 'comments/comment_form'%></div>
+<h5 id="comments-count">This post has <%= pluralize(@commentable.comments.count, 'comment') %></h5>
+<div id="comments-list">
+  <%= render partial: @commentable.reload.comments.reverse %>
+</div>
+<%= hidden_field_tag :blog_id, @post.blog_id %>
 <% if can? :update && :edit && :destroy, @post%>
-	<%= link_to 'Edit', edit_post_path(@post) %>
-	<%= button_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+	<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary btn-lg active"  %>
+	<%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-lg active" %>
 	<% end %>
 </p>
-<p><%= link_to 'Return to list of posts', blog_path(@post.blog_id) %></p>
 </div>

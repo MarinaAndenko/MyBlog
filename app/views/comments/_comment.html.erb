@@ -1,0 +1,11 @@
+<p>
+	<% if comment.user!=nil %>
+		Author: <%=  link_to comment.user.username, user_path(comment.user) %><br>
+		Created at: <%=  comment.created_at.strftime("%d %b. %Y at %H:%M") %><br>
+		<%=  comment.body %><br>
+		<% route = @user ? comment_path(comment, user_id: @user.id) : comment_path(comment, post_id: @post.id) %>
+		<% if can? :destroy, comment %>
+		<%= link_to 'Delete', route, method: :delete, class: "btn btn-default" %>
+		<% end %>
+	<% end %>
+</p>

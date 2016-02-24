@@ -15,7 +15,6 @@
   </tr>
   </thead>
   <tbody>
-  <% i = 1%>
   <% @users.each do |user| %>
   <% next if user == current_user %>
       <tr class="active"> 
@@ -24,9 +23,9 @@
         <td>
         <%= hidden_field_tag('people2[]', user.id) %>
         <%= check_box_tag("people[]", user.id, user.admin?)%>
-        <% end %>
          </td>
       </tr>
+      <% end %>
   </tbody>
 </table>
 </div>

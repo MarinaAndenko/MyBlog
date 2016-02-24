@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>SlobodaApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag :all %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag "jquery" %>
+   <%= stylesheet_link_tag    'rewrite' %>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag 'style' %> 
 </head>
-<body>
+<body class = "body">
   <nav class="navbar navbar-default navbar-fixed-top navbar-default-bg">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to '', blogs_path, class: "glyphicon glyphicon-send navbar-brand"  %>
+      <%= link_to '', blogs_path, id: "font-title", class: "navbar-brand fa fa-diamond fa-2x"  %>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <%= render "shared/navbar" %>

@@ -1,0 +1,12 @@
+<div id="header-font"><h2 class="header-font">Edit the prfile</h2></div>
+<div class = "back"> 
+  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
+</div>
+<div class="my_field-input">
+<%= form_for @user, url: user_path, class: "new_form" do |f| %>
+  <div class="form-group">
+    <%= f.text_area :information,class: "form-control", placeholder: "Enter the text here.", rows: 5 %>
+  </div>
+  <%= f.submit 'Save', class: "btn btn-primary" %>
+<% end %>
+</div>

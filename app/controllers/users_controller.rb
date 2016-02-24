@@ -1,0 +1,49 @@
+class UsersController < ApplicationController
+  def show
+  	@user = User.find(params[:id])
+  	@q_posts = 0
+  	@user.blogs.each do |blog|
+  		@q_posts += blog.posts.count 
+  	end
+  	posts = Post.joins(:blog).where(:blogs => { :user_id => @user.id })
+  	@last_post = posts.last
+  	@commentable = commentable
+	  @comment = @commentable.comments.new
+	  @comments = @commentable.comments
+    @route = comments_path(user_id: @user.id) 
+  end
+
+  def edit
+  	@user = User.find(params[:id])
+  end
+
+  def update
+  	@user = User.find(params[:id])
+  	if @user.update(user_params)
+			redirect_to @user
+	else
+			render 'edit' 
+	end
+  end
+
+  private
+  def user_params
+  	params.require(:user).permit(:information)
+  end 
+  def comment_params
+    	params.require(:comment).permit(:body)
+  	end
+
+  	def commentable
+      id = params[:user_id]
+      User.find(params[:id])
+    end 
+
+    def commentable_url(commentable)
+    if User === commentable
+      user_path(commentable)
+    else
+      post_path(commentable)
+    end
+    end
+end
