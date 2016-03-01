@@ -1,30 +1,39 @@
 
 <div class="my_field">
-<div class="panel panel-primary">
-  <div>
-    <h2 class="header-font"><%= @post.name %></h2>
-  </div>
-  <div class="panel-body">
-<div class="author attributes-f">
-  	Author <span class="badge attributes"><%= link_to @post.blog.user.username, user_path(@post.blog.user_id) %></span>
-  	<%= link_to ' To all posts', blog_path(@post.blog_id), class: "btn btn-default" %>
-  </div>
+  <div class="panel panel-primary">
+    <div>
+        <h2 class="header-font"><%= @post.name %></h2>
+    </div>
+      <div class="panel-body">
+        <div class="author attributes-f">
+        	Author <span class="badge attributes"><%= link_to @post.blog.user.username.capitalize, user_path(@post.blog.user_id), id: "link-author" %></span>
+        </div>
 
-  <div class="date attributes-f">
-  	Created <span class="badge attributes"><%= @post.created_at.strftime("%d %b. %Y at %H:%M") %></span>
+        <div class="date attributes-f">
+        	Created <span class="badge attributes"><%= @post.created_at.strftime("%d %b. %Y at %H:%M") %></span>
+        </div>
+    </div>
+    <div class="panel-footer text"><%= @post.text %><br>
+      <div class="button-center attributes-f">
+        <%= link_to ' To all posts', blog_path(@post.blog_id), class: "btn btn-default" %>
+      </div>
+      <%= hidden_field_tag :blog_id, @post.blog_id %>
+      <% if can? :update && :edit && :destroy, @post%>
+        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary active"  %>
+        <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default active" %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="panel-footer text"><%= @post.text %></div>
-</div>
-<div id = "comment-form" ><%= render 'comments/comment_form'%></div>
-<h5 id="comments-count">This post has <%= pluralize(@commentable.comments.count, 'comment') %></h5>
-<div id="comments-list">
-  <%= render partial: @commentable.reload.comments.reverse %>
-</div>
-<%= hidden_field_tag :blog_id, @post.blog_id %>
-<% if can? :update && :edit && :destroy, @post%>
-	<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary btn-lg active"  %>
-	<%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-lg active" %>
-	<% end %>
-</p>
+    <div class="button-center attributes-f">
+      <span id = "scroll"><a class = "btn btn-default" href="#comment-form">Leave a comment</a></span>
+    </div>
+  <div id="comments-count" class="attributes-f-com"> 
+    <h5>Comments: <%= @commentable.comments.count %></h5>
+  </div>
+  <div id="comments-list">
+    <%= render partial: @commentable.reload.comments.reverse %>
+  </div>
+  <div id = "comment-form">
+    <%= render 'comments/comment_form'%>
+  </div>
 </div>

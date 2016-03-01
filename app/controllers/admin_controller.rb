@@ -4,7 +4,7 @@ class AdminController < ApplicationController
 	end
 	def edit_user_role
 		@page = params[:page]
-		@users = User.all.paginate(page: @page, :per_page => 5)
+		@users = User.all.where("id != #{current_user.id} ").paginate(page: @page, :per_page => 5)
 		@users.each do |user|
 			if params['people2']!=nil 
 				if params['people2'].include? user.id.to_s

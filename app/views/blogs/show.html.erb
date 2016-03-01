@@ -1,49 +1,51 @@
 
 <div class="my_field">
-<div class="panel panel-primary">
-  <div>
-    <h2 class="header-font"><%= @blog.name %></h2>
+  <div class="panel panel-primary">
+    <div>
+      <h2 class="header-font"><%= @blog.name %></h2>
+    </div>
+    <div class="panel-body">
+      <% if @posts == []%>
+        <p class = "text">
+          You don't have any post yet. You can create the first one by directing this <%= link_to "link", new_post_path(blog_id: @blog.id), id: "link" %>.
+        </p>
+        <% else %>
+          <div class="author attributes-f">
+          	Author <span class="badge attributes"><%= link_to @blog.user.username.capitalize, user_path(@blog.user_id), id: "link-author" %></span>
+          </div>
+          <div class="date attributes-f">
+          	<% if @blog.posts.last != nil %>
+          	Last update <span class="badge attributes"><%= @blog.posts.last.created_at.strftime("%d %b. %Y at %H:%M") %></span>
+        	  <% end %>
+          </div>
+        <br><br>
+        <% if can? :edit, @blog %>
+          <div class = "button-center">
+          <%= link_to "Create New Post", new_post_path(blog_id: @blog.id), class: "btn btn-info" %>
+          </div>
+        <% end %>
+        <br>
+        <% @posts.each do |post| %>
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= link_to post.name, post_path(post), class: "heading-post" %></h3>
+            </div>
+            <div>
+              <%= link_to post.description, post_path(post), class: "list-group-item panel-body text" %>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+    <%= will_paginate @posts, class: "pager digg_pagination" %>
+    <div class="button-center attributes-f">
+      <%= link_to ' To all blogs of this author', blogs_path(user_id: @blog.user_id), class: "btn btn-default" %>
+    </div>
+   </div>
   </div>
-  <div class="panel-body">
-
-  <div class="author attributes-f">
-  	Author <span class="badge attributes"><%= link_to @blog.user.username, user_path(@blog.user_id) %></span>
-  	<%= link_to ' To all blogs of this author', blogs_path(user_id: @blog.user_id), class: "btn btn-default" %>
-  </div>
-
-  <div class="date attributes-f">
-  	<% if @blog.posts.last != nil %>
-  	Last update <span class="badge attributes"><%= @blog.posts.last.created_at.strftime("%d %b. %Y at %H:%M") %></span>
-	<% end %>
-  </div>
-
-<br><br>
-<% if can? :edit, @blog %>
-<div class = "button-center">
-<%= link_to "Create New Post", new_post_path(blog_id: @blog.id), class: "btn btn-info" %>
 </div>
-<% end %>
-<br>
-<% @posts.each do |post| %>
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= link_to post.name, post_path(post), class: "heading-post" %></h3>
-  </div>
-  <div>
-  <%= link_to post.description, post_path(post), class: "list-group-item panel-body text" %>
-  </div>
-</div>
-<% end %>
-
-<%= will_paginate @posts, class: "pager digg_pagination" %>
-</p>
-  </div>
-</div>
-
 <p>
 	<% if can? :update && :edit && :destroy, @blog%>
 	<%= link_to 'Edit', edit_blog_path(@blog), class: "btn btn-primary btn-lg active" %>
-	
 	<%= link_to 'Delete', blog_path(@blog), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-lg active" %>
 	<% end %>
 </p>

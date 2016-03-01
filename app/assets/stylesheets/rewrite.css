@@ -1,3 +1,11 @@
+ .navbar-right > li > a
+{
+	color: #a9a9a9 !important;
+}
+ .navbar-right > li > a:hover
+{
+	color: #778899 !important;
+}
 .navbar .brand, .navbar .nav > li > a {
     color: #00BFFF;
 }

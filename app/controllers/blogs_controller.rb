@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
 		q = params[:user_id] ? "user_id = #{params[:user_id]}" : ''
 		authenticate_user! if q != ''
 		@blogs = Blog.all.where(q).paginate(page: @page, :per_page => 10)
+		#binding.pry
 	end
 
 	def show

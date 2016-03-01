@@ -2,11 +2,11 @@
 <html>
 <head>
   <title>SlobodaApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application'%>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag "jquery" %>
-   <%= stylesheet_link_tag    'rewrite' %>
-  <%= javascript_include_tag 'application'%>
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'rewrite' %>
+    <%= csrf_meta_tags %>
 </head>
 <body class = "body">
   <nav class="navbar navbar-default navbar-fixed-top navbar-default-bg">
@@ -24,8 +24,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <%= render "shared/navbar" %>
   </div><!-- /.container-fluid -->
-</nav>
-
-<%= yield %>
+  </nav>
+  <%= yield %>
 </body>
 </html>

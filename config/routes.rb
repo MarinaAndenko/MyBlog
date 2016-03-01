@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-  resources :comments
+  #get 'users/:user_id' => 'comments#create'
+  #post 'users/:user_id' => 'comments#create'
   resources :blogs
   resources :posts
   #resources :users, only: [:show, :edit, :update]
@@ -14,9 +14,8 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   resources :users, only: [:show, :edit, :update]
+  resources :comments, only: [:create, :destroy]
   get 'admin_panel' => 'admin#index' , as: :admin
   get 'admin_panel/edit_user_role' => 'admin#edit_user_role'
   post 'admin_panel/edit_user_role' => 'admin#edit_user_role'
-
-  
 end

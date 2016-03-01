@@ -2,36 +2,38 @@
 <%= stylesheet_link_tag 'style' %> 
 <div id="header-font"><h2 class="header-font">User list</h2></div>
 <h2>User list</h2>
+<div class = "back btn btn-default"> 
+  <span class="glyphicon glyphicon-chevron-left back-arr" aria-hidden="true"></span><%= link_to 'Back to Admin Panel', admin_path, class: "back-font" %>
+</div>
 <div class="my_field">
+<br><br>
 <%= form_for :page, url: admin_panel_edit_user_role_path(@page,page: @page) do |f| %>
 <div class="my_table">
-<div class = "paginate"><%= will_paginate @users, class: "pager" %></div>
-<table class="table table-hover">
-  <thead>
-  <tr class="info">
-    <th>Username</th>
-    <th>Email</th>
-    <th>Admin Role</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @users.each do |user| %>
-  <% next if user == current_user %>
-      <tr class="active"> 
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td>
-        <%= hidden_field_tag('people2[]', user.id) %>
-        <%= check_box_tag("people[]", user.id, user.admin?)%>
-         </td>
+  <table class="table table-hover text">
+    <thead>
+      <tr class="color-table">
+        <th>Username</th>
+        <th>Email</th>
+        <th>Admin Role</th>
       </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+          <tr class="color-td"> 
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td>
+            <%= hidden_field_tag('people2[]', user.id) %>
+            <%= check_box_tag("people[]", user.id, user.admin?)%>
+             </td>
+          </tr>
       <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 </div>
   <div id = "button-center">
     <div class="button-center" ><%= f.submit "Submit", class: "btn btn-info" %></div>
   </div>
-<p class = "b"><%= link_to 'Back to Admin Panel', admin_path %></p>
-<% end %>
+  <%= will_paginate @users, class: "pager digg_pagination" %>
+  <% end %>
 </div>

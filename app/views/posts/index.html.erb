@@ -1,8 +1,0 @@
-<% @posts = Post.all %>
-<% @posts.each do |post|%>
-	<p>
-		<%= link_to post.name, user_blog_post_path(@blog.user_id,@blog, post) %><br>
-		<%= post.description%><br>
-		<%= post.text%>
-	</p>
-	<% end %>

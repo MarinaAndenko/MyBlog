@@ -1,6 +1,6 @@
 .body
 {
-    background-color: #dcdcdc; 
+    background-color: #e6e6fa; 
 } 
 
 .field-center
@@ -49,25 +49,39 @@
 }
 .back-font
 {
-	color: black;
-	font-family: mentone-semibol;
+	color: #00008b;
+	font-family: mentone-semibol !important;
 }
 
 .back-font:hover
 {
 	text-decoration: none;
-	color: black;
+	color: #00008b;
+}
+.back-arr
+{
+	color: #00008b;
 }
 .attributes
 {
 	font-family: mentone-semibol;
 	font-size: 12pt !important;
+}
+.attributes-com
+{
+	font-family: mentone-semibol;
+	font-size: 9pt !important;
 	background: #1e90ff !important;
 }
 .attributes-f
 {
 	font-family: mentone-semibol;
-	font-size: 12pt !important;
+	font-size: 14pt !important;
+}
+.attributes-f-com
+{
+	font-family: mentone-semibol;
+	font-size: 10pt !important;
 }
 .text-field-full
 {
@@ -97,6 +111,24 @@
 #menu-font
 {
 	font-family: Harabara, sans-serif;
+	font-size: 14pt;
+}
+#menu-font-sign
+{
+	font-family: Harabara, sans-serif;
+	font-size: 14pt;
+}
+#link
+{
+	text-decoration: none;
+}
+#link-author
+{
+	text-decoration: none;
+	color: white;
+}
+.label-as-badge {
+    border-radius: 1em;
 }
 .heading 
 {
@@ -107,18 +139,41 @@
 .heading:hover
 {
 	text-decoration: none;
-	color: #9400d3;
+	color: #0000cd;
 }
 .text
 {
 	font-family: mentone-semibol;
 	font-size: 14pt;
 }
+.text-infog
+{
+	font-family: mentone-semibol;
+	font-size: 12pt;
+}
+.infograf
+{
+	width: 70%;
+}
+.color-infog
+{
+	color: #000080;
+}
+.color-table
+{
+	background: #4169e1;
+	font-family: mentone-semibol;
+	font-size: 16pt;
+	color: white;
+}
+.color-td
+{
+	background: white;
+}
 .heading-post
 {
 	font-family: OldSansBlack, sans-serif;
 	font-size: 18pt;
-	color: #00008b;
 }
 .heading-post:hover
 {
@@ -129,6 +184,12 @@
 	text-align: center;
 	font-family: OldSchool, sans-serif;
 	color: #000080;
+}
+.header-font-user
+{
+	text-align: center;
+	font-family: OldSchool, sans-serif;
+	color: #1E90FF;
 }
 #header-font
 {
@@ -174,6 +235,24 @@
 .list-group-item 
 {
 	border:none !important;
+}
+#comment-form
+{
+	position: relative;
+	width: 80%;
+	left: 10%;
+}
+#comments-list
+{
+	position: relative;
+	width: 80%;
+	left: 10%;
+}
+#comments-count
+{
+	position: relative;
+	width: 80%;
+	left: 10%;
 }
 .dropdown
 {

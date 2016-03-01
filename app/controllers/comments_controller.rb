@@ -9,9 +9,10 @@ class CommentsController < ApplicationController
     @commentable = commentable
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    if @comment.save
-    	redirect_to commentable_url(commentable)
-  	end
+      json = if @comment.save
+       { json: { comment: render_to_string("comments/_comment", layout: false, locals:{comment: @comment}) }}
+      end 
+      render json
   end
 
   def edit
@@ -30,13 +31,10 @@ class CommentsController < ApplicationController
   def destroy
     @commentable = commentable
     @comment = @commentable.comments.find(params[:id])
-    @comment.destroy
-    respond_to do |format|
-      format.html do
-        redirect_to commentable_url(commentable)
-      end
-      format.js
-    end
+    json = if  @comment.destroy
+      { json: { comment_del: render_to_string("comments/_comment", layout: false, locals:{comment: @comment}) }}
+    end 
+    render json
   end
 
 private
@@ -59,6 +57,14 @@ private
       user_path(commentable)
     else
       post_path(commentable)
+    end
+  end
+
+  def commentable_field
+    if User === commentable
+      @store = User.find(params[:user_id])
+    else
+      @store = Post.find(params[:post_id])
     end
   end
 

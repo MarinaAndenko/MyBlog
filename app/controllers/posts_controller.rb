@@ -27,7 +27,6 @@ class PostsController < ApplicationController
 		@post.blog_id = params[:post][:blog_id] if @post.blog_id == nil
 		if @post.save
 			redirect_to @post
-			binding.pry
 		else
 			render 'new' 
 		end

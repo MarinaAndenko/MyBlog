@@ -1,12 +1,17 @@
-<div id="header-font"><h2 class="header-font">Edit the prfile</h2></div>
-<div class = "back"> 
-  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
+<div id="header-font"><h2 class="header-font">Tell others about yourself</h2></div>
+<div class = "back btn btn-default"> 
+  <span class="glyphicon glyphicon-chevron-left back-arr" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
 </div>
 <div class="my_field-input">
-<%= form_for @user, url: user_path, class: "new_form" do |f| %>
-  <div class="form-group">
-    <%= f.text_area :information,class: "form-control", placeholder: "Enter the text here.", rows: 5 %>
-  </div>
-  <%= f.submit 'Save', class: "btn btn-primary" %>
-<% end %>
+	<br><br>
+	<%= form_for @user, url: user_path, class: "new_form" do |f| %>
+	  <div class="form-group">
+	    <%= f.text_area :information,class: "form-control", placeholder: "Enter the text here.", rows: 5 %>
+	    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+	    <%= f.file_field :avatar %>
+	  </div>
+	   <div id = "button-center">
+	    <div class="button-center" ><%= f.submit "Save", class: "btn btn-info btn-lg" %></div>
+	  </div>
+	<% end %>
 </div>

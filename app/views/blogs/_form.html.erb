@@ -1,12 +1,12 @@
-<div class = "back"> 
-  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
+<div class = "back btn btn-default"> 
+  <span class="glyphicon glyphicon-chevron-left back-arr" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
 </div>
 <div class="my_field-input">
 <div class="form-group">
 	<%= form_for @blog do |f| %>
 	<% if @blog.errors.any? %>
 	<div class="alert alert-warning alert-block text-danger">
-      <button type="button" class="close" data-dismiss="alert">x</button>
+    <button type="button" class="close" data-dismiss="alert">x</button>
 		<h2>
 			<%= pluralize(@blog.errors.count, "error") %> prohibiten this blog from being saved:
 		</h2>
@@ -19,17 +19,17 @@
 	<% end %>
 	<p>
 		<%= f.label :name, class: "attributes-f" %><br>
-		<%= f.text_field :name, class: "form-control", id:"exampleInputEmail1" %>
+		<%= f.text_field :name, class: "form-control", id:"exampleInputEmail1", placeholder: "Name of the blog" %>
 	</p>
 	<br>
 	<p>
 		<%= f.label :description, class: "attributes-f" %><br>
-		<%= f.text_area :description, class: "form-control", rows: "5", id: "comment" %>
+		<%= f.text_area :description, class: "form-control", rows: "5", id: "comment", placeholder: "Share with others what your blog is about..." %>
 	</p>
 	<p>
 		<br>
-  <div id = "button-center">
-    <div class="button-center" ><%= f.submit "Create", class: "btn btn-info btn-lg" %></div>
+	  <div id = "button-center">
+	    <div class="button-center" ><%= f.submit "Create", class: "btn btn-info btn-lg" %></div>
   </div>
 	</p>
 	<% end %>

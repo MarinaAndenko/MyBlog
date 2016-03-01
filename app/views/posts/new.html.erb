@@ -1,41 +1,49 @@
 
 <div id="header-font"><h2 class="header-font">New Post</h2></div>
-<div class = "back"> 
-  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
+<div class = "back btn btn-default"> 
+  <span class="glyphicon glyphicon-chevron-left back-arr" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
 </div>
 <div class="my_field-input">
-
-	<%= form_for @post do |f| %>
-	<%= render 'errors' %>
-	<% if params[:blog_id]==nil%>
-	<div class="dropdown">
-		<%= f.label "Select the blog", class: "attributes-f"  %>
-		<%= f.collection_select(:blog_id, @blogs, :id, :name, {}, class: "input-sm") %>
+	<% if @blog == nil && @blogs == [] %>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+				<p class = "text">
+			    You don't have any blog yet. To create new post, you need to create the blog at first. You can create the your first blog by directing this <%= link_to "link", new_blog_path, id: "link" %>.
+			  </p>
+		  </div>
 		</div>
-	<% else %>
-		<%= hidden_field_tag 'blog_id', params[:blog_id] %>
-	<% end %>
-	<br>
-	<p>
-		<%= f.label :name, class: "attributes-f"  %><br>
-		<%= f.text_field :name, class: "form-control", id:"exampleInputEmail1" %>
-	</p>
-	<br>
-	<p>
-		<%= f.label :description, class: "attributes-f"  %><br>
-		<%= f.text_area :description, class: "form-control", rows: "5", id: "comment"  %>
-	</p>
-	<br>
-	<p>
-		<%= f.label :text, class: "attributes-f"  %><br>
-		<%= f.text_area :text, class: "form-control", rows: "10", id: "comment"  %>
-	</p>
-	<p>
-	<br>
-  <div id = "button-center">
-    <div class="button-center" ><%= f.submit "Create", class: "btn btn-info btn-lg" %></div>
-  </div>
-
-	</p>
+	  <% else %>
+		<%= form_for @post do |f| %>
+			<%= render 'errors' %>
+			<% if params[:blog_id]==nil%>
+			<div class="form-group">
+				<%= f.label "Select the blog", class: "attributes-f"  %>
+				<%= f.collection_select(:blog_id, @blogs, :id, :name, {}, {class: "form-control"}) %>
+				</div>
+			<% else %>
+				<%= hidden_field_tag 'blog_id', params[:blog_id] %>
+			<% end %>
+			<br>
+			<p>
+				<%= f.label :name, class: "attributes-f"  %><br>
+				<%= f.text_field :name, class: "form-control", id:"exampleInputEmail1", placeholder: "Name of the post" %>
+			</p>
+			<br>
+			<p>
+				<%= f.label :description, class: "attributes-f"  %><br>
+				<%= f.text_area :description, class: "form-control", rows: "5", id: "comment", placeholder: "Share with others what your post is about..."  %>
+			</p>
+			<br>
+			<p>
+				<%= f.label :text, class: "attributes-f"  %><br>
+				<%= f.text_area :text, class: "form-control", rows: "10", id: "comment", placeholder: "Type the post text here."  %>
+			</p>
+			<p>
+				<br>
+			  <div id = "button-center">
+			    <div class="button-center" ><%= f.submit "Create", class: "btn btn-info btn-lg" %></div>
+			  </div>
+			</p>
+		<% end %>
 	<% end %>
 </div>
