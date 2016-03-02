@@ -66,12 +66,17 @@
 {
 	font-family: mentone-semibol;
 	font-size: 12pt !important;
+	background: #1e90ff !important;
 }
 .attributes-com
 {
 	font-family: mentone-semibol;
 	font-size: 9pt !important;
-	background: #1e90ff !important;
+}
+.attributes-user
+{
+	font-family: mentone-semibol;
+	font-size: 12pt !important;
 }
 .attributes-f
 {
@@ -191,6 +196,39 @@
 	font-family: OldSchool, sans-serif;
 	color: #1E90FF;
 }
+.image-field-ed
+{
+	position: relative;
+	width: 100%;
+	float: left;
+	float: top;
+}
+.image-ed
+{
+	position: relative;
+	width: 20%;
+	float: left;
+	float: top;
+}
+.image-field
+{
+	position: relative;
+	width: 30%;
+	float: right;
+	float: top;
+}
+.image
+{
+	width: 100%;
+}
+.fileinput
+{
+	.button
+	{
+		color: green;
+	}
+}
+
 #header-font
 {
 	position: absolute;

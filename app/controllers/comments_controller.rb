@@ -15,19 +15,6 @@ class CommentsController < ApplicationController
       render json
   end
 
-  def edit
-    @commentable = commentable
-    @comment = @commentable.comments.find(params[:id])
-  end
-
-  def update
-    @commentable = commentable
-    @comment = @commentable.comments.find(params[:id])
-    if @comment.update_attributes(comment_params)
-      redirect_to commentable_url(commentable)
-    end
-  end
-
   def destroy
     @commentable = commentable
     @comment = @commentable.comments.find(params[:id])
@@ -57,14 +44,6 @@ private
       user_path(commentable)
     else
       post_path(commentable)
-    end
-  end
-
-  def commentable_field
-    if User === commentable
-      @store = User.find(params[:user_id])
-    else
-      @store = Post.find(params[:post_id])
     end
   end
 

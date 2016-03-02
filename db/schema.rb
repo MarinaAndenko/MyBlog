@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229180844) do
+ActiveRecord::Schema.define(version: 20160302112509) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "author",      limit: 255
@@ -65,6 +65,10 @@ ActiveRecord::Schema.define(version: 20160229180844) do
     t.datetime "confirmation_sent_at"
     t.string   "role",                   limit: 255,   default: "user"
     t.text     "information",            limit: 65535
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
+    t.datetime "avatar_updated_at"
     t.string   "avatar",                 limit: 255
   end
 

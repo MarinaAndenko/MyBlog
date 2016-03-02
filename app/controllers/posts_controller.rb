@@ -1,10 +1,5 @@
 class PostsController < ApplicationController
 
-  	def index
-		@page = params[:page]
-		@posts = Post.all.paginate(page: @page, :per_page => 10)
-	end
-
 	def show
 		@post = Post.find(params[:id])
 		@commentable = commentable

@@ -4,11 +4,22 @@
 </div>
 <div class="my_field-input">
 	<br><br>
-	<%= form_for @user, url: user_path, class: "new_form" do |f| %>
+	<%= form_for @user, html: { multipart: true }, url: user_path, class: "new_form" do |f| %>
 	  <div class="form-group">
-	    <%= f.text_area :information,class: "form-control", placeholder: "Enter the text here.", rows: 5 %>
-	    <%= image_tag(@user.avatar_url) if @user.avatar? %>
-	    <%= f.file_field :avatar %>
+	    <%= f.text_area :information, class: "form-control", placeholder: "Enter the text here.", rows: 5 %>
+	    <br>
+	    <span class = "" >
+	    	<div class = "image-field-ed">
+		    <% if @user.avatar %>
+	          <%= image_tag @user.avatar.url, class: "image-ed", alt: "" %>
+	        <% end %>
+        </div>
+        <br><br>
+        <div>
+		    	<label>Upload the photo to your profile: </label>
+		    	<%= f.file_field :avatar, value: "Choose a file", class: "fileinput"  %>
+		    </div>
+	    </span>
 	  </div>
 	   <div id = "button-center">
 	    <div class="button-center" ><%= f.submit "Save", class: "btn btn-info btn-lg" %></div>

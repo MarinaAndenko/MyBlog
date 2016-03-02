@@ -5,20 +5,23 @@
       <h2 class="header-font"><%= @blog.name %></h2>
     </div>
     <div class="panel-body">
-      <% if @posts == []%>
-        <p class = "text">
-          You don't have any post yet. You can create the first one by directing this <%= link_to "link", new_post_path(blog_id: @blog.id), id: "link" %>.
-        </p>
-        <% else %>
           <div class="author attributes-f">
-          	Author <span class="badge attributes"><%= link_to @blog.user.username.capitalize, user_path(@blog.user_id), id: "link-author" %></span>
+            Author <span class="badge attributes"><%= link_to @blog.user.username.capitalize, user_path(@blog.user_id), id: "link-author" %></span>
           </div>
           <div class="date attributes-f">
-          	<% if @blog.posts.last != nil %>
-          	Last update <span class="badge attributes"><%= @blog.posts.last.created_at.strftime("%d %b. %Y at %H:%M") %></span>
-        	  <% end %>
+            <% if @blog.posts.last != nil %>
+            Last update <span class="badge attributes"><%= @blog.posts.last.created_at.strftime("%d %b. %Y at %H:%M ") %></span>
+            <% end %>
           </div>
-        <br><br>
+          <br><br>
+      <% if @posts == []%>
+        <p class = "text">
+          Here isn't any post yet. 
+        <% if @blog.user_id == current_user.id %>
+          You can create the first one by directing this <%= link_to "link", new_post_path(blog_id: @blog.id), id: "link" %>.
+        <% end %>
+        </p>
+      <% else %>
         <% if can? :edit, @blog %>
           <div class = "button-center">
           <%= link_to "Create New Post", new_post_path(blog_id: @blog.id), class: "btn btn-info" %>
@@ -40,12 +43,13 @@
     <div class="button-center attributes-f">
       <%= link_to ' To all blogs of this author', blogs_path(user_id: @blog.user_id), class: "btn btn-default" %>
     </div>
+    <p>
+      <% if can? :update && :edit && :destroy, @blog%>
+      <%= link_to 'Edit', edit_blog_path(@blog), class: "btn btn-primary active" %>
+      <%= link_to 'Delete', blog_path(@blog), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default active" %>
+      <% end %>
+    </p>
    </div>
+
   </div>
 </div>
-<p>
-	<% if can? :update && :edit && :destroy, @blog%>
-	<%= link_to 'Edit', edit_blog_path(@blog), class: "btn btn-primary btn-lg active" %>
-	<%= link_to 'Delete', blog_path(@blog), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-lg active" %>
-	<% end %>
-</p>

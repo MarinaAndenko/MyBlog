@@ -30,5 +30,8 @@ group :development do
   gem 'bootstrap-sass', '~> 3.3.6'
   gem 'font-awesome-sass'
   gem 'carrierwave'
+  gem 'mini_magick'
+  gem "paperclip",      "~> 4.3"
+  gem 'simple_form'
 end
 

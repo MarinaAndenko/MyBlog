@@ -1,7 +1,7 @@
 <div class="small-menu collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav active">
     <li><%= link_to "My Blogs", blogs_path(user_id: current_user.id), id: "menu-font"   if current_user != nil%></li>
-    <li><%= link_to "Profile", user_path(current_user), id: "menu-font"   if current_user != nil%></li>
+    <li><%= link_to "My Profile", user_path(current_user), id: "menu-font"   if current_user != nil%></li>
     <li><%= link_to "Create New Blog", new_blog_path, id: "menu-font" %></li>
     <li><%= link_to "Create New Post", new_post_path, id: "menu-font" %></li>
     <% if can? :manage, :all %>
@@ -16,5 +16,5 @@
          <li><%= link_to "Sign Up", new_user_registration_path, :method => :get, id: "menu-font-sign"  %></li>
       <% end %>
     </ul>
-</div><!-- /.navbar-collapse -->
+</div>
 

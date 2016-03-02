@@ -5,14 +5,14 @@
 	  		Author <span class="badge attributes-com"><%= link_to comment.user.username.capitalize, user_path(comment.user), id: "link-author" %></span>
 	    </div>
 	    <div class="date attributes-f-com">
-	  		Created <span class="badge attributes-com"><%= comment.created_at.strftime("%d %b. %Y at %H:%M") %></span>
+	  		Created <span class="badge attributes-com"><%= comment.created_at.strftime("%d %b. %Y at %H:%M ") %></span>
 	    </div>
   </div>
 			<div class = "panel-footer" >
 			  <div class = "text"><%=  comment.body %></div>
 				<% route = comment.commentable_type == "User" ? comment_path(comment, user_id: comment.commentable_id) : comment_path(comment, post_id: comment.commentable_id) %>
 				<div>
-					<% if can? :destroy, comment %>
+					<% if (can? :destroy, comment) || delele_comment?(comment) %>
 						<%= link_to 'Delete', route, method: :delete, id: "delete-comment", class: "btn btn-default back-font", remote: true %>
 					<% end %>
 				</div>

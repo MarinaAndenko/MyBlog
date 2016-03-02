@@ -19,31 +19,32 @@ class UsersController < ApplicationController
 
   def update
   	@user = User.find(params[:id])
-  	if @user.update(user_params)
+  	if @user.update!(user_params)
 			redirect_to @user
-	else
+	  else
 			render 'edit' 
-	end
+	  end
   end
 
   private
   def user_params
-  	params.require(:user).permit(:information)
+  	params.require(:user).permit(:information, :avatar)
   end 
   def comment_params
-    	params.require(:comment).permit(:body)
-  	end
+   	params.require(:comment).permit(:body)
+  end
 
-  	def commentable
+  def commentable
       id = params[:user_id]
       User.find(params[:id])
-    end 
+  end 
 
-    def commentable_url(commentable)
+  def commentable_url(commentable)
     if User === commentable
       user_path(commentable)
     else
       post_path(commentable)
     end
-    end
+  end
+  
 end
