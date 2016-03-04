@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  
   def show
   	@user = User.find(params[:id])
+    User.all.each {|user| user.avatar.recreate_versions!  if user.avatar? }
   	@q_posts = 0
   	@user.blogs.each do |blog|
   		@q_posts += blog.posts.count 
@@ -19,6 +21,10 @@ class UsersController < ApplicationController
 
   def update
   	@user = User.find(params[:id])
+    if params['remove_avatar']== 'true'
+      @user.remove_avatar!
+      @user.remove_avatar = true
+    end 
   	if @user.update!(user_params)
 			redirect_to @user
 	  else

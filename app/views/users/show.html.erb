@@ -22,7 +22,7 @@
         <div>
           <span class = "infograf color-infog" > Information about the user:</span>
             <div class = "image-field">
-                <%= image_tag @user.avatar_url, class: "image", alt: "" %>
+                <%= image_tag @user.avatar_url(:normal), alt: "" %>
             </div>
           <% if @user.information == nil || @user.information == "" %>
             It's no personal information about user yet.<br>

@@ -10,9 +10,10 @@
 	    <br>
 	    <span class = "" >
 	    	<div class = "image-field-ed">
-		    <% if @user.avatar %>
-	          <%= image_tag @user.avatar.url, class: "image-ed", alt: "" %>
-	        <% end %>
+	          <%= image_tag @user.avatar.url(:preview), alt: "" %>
+	          <% if @user.avatar.url %> 
+        			<label>Delete photo:</label><%= check_box_tag("remove_avatar", true)%>
+      			<% end %>
         </div>
         <br><br>
         <div>
