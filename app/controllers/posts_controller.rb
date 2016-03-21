@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	@@post_name = nil
 
 	def show
 		@post = Post.find(params[:id])
@@ -33,9 +34,11 @@ class PostsController < ApplicationController
 
 	def update
 		@post = Post.find(params[:id])
+		#@post = Post.find_by_name(@@pidst_name) if @post == nil
 		if @post.update(post_params)
 			redirect_to @post
 		else
+			#name_of_post(params[:name])
 			render 'edit' 
 		end
 	end 
@@ -73,4 +76,8 @@ class PostsController < ApplicationController
       post_path(commentable)
     end
     end
+
+    def name_of_post(params)
+		@@post_name = params
+	end 
 end

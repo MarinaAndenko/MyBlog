@@ -6,7 +6,7 @@
     </div>
     <div class="panel-body">
           <div class="author attributes-f">
-            Author <span class="badge attributes"><%= link_to @blog.user.username.capitalize, user_path(@blog.user_id), id: "link-author" %></span>
+            Author <span class="badge attributes"><%= link_to @blog.user.username.capitalize, user_path(@blog.user), id: "link-author" %></span>
           </div>
           <div class="date attributes-f">
             <% if @blog.posts.last != nil %>

@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   
   def show
-  	@user = User.find(params[:id])
+  	@user = User.find_by_username(params[:username])
     User.all.each {|user| user.avatar.recreate_versions!  if user.avatar? }
   	@q_posts = 0
   	@user.blogs.each do |blog|
   		@q_posts += blog.posts.count 
   	end
-  	posts = Post.joins(:blog).where(:blogs => { :user_id => @user.id })
+  	posts = Post.joins(:blog).where(:blogs => { user_id: @user.id })
   	@last_post = posts.last
   	@commentable = commentable
 	  @comment = @commentable.comments.new
@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-  	@user = User.find(params[:id])
+  	@user = User.find_by_username(params[:username])
   end
 
   def update
-  	@user = User.find(params[:id])
+  	@user = User.find_by_username(params[:username])
     if params['remove_avatar']== 'true'
       @user.remove_avatar!
       @user.remove_avatar = true
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def commentable
       id = params[:user_id]
-      User.find(params[:id])
+      User.find_by_username(params[:username])
   end 
 
   def commentable_url(commentable)

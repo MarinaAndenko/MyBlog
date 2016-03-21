@@ -6,7 +6,7 @@
     </div>
       <div class="panel-body">
         <div class="author attributes-f">
-        	Author <span class="badge attributes"><%= link_to @post.blog.user.username.capitalize, user_path(@post.blog.user_id), id: "link-author" %></span>
+        	Author <span class="badge attributes"><%= link_to @post.blog.user.username.capitalize, user_path(@post.blog.user), id: "link-author" %></span>
         </div>
 
         <div class="date attributes-f">
@@ -31,7 +31,7 @@
     <h5>Comments: <%= @commentable.comments.count %></h5>
   </div>
   <div id="comments-list">
-    <%= render partial: @commentable.reload.comments.reverse %>
+    <%= render @commentable.reload.comments.reverse %>
   </div>
   <div id = "comment-form">
     <%= render 'comments/comment_form'%>

@@ -21,4 +21,7 @@ class User < ActiveRecord::Base
          :trackable, 
          :validatable,
          :confirmable
+  def to_param
+    username
+  end 
 end
