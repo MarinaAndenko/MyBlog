@@ -36,5 +36,6 @@ group :development do
   gem 'friendly_id'
   gem 'actionpack-page_caching'
   gem 'actionpack-action_caching'
+  gem 'russian', '~> 0.6.0'
 end
 

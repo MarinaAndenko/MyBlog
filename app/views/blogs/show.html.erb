@@ -10,7 +10,7 @@
           </div>
           <div class="date attributes-f">
             <% if @blog.posts.last != nil %>
-            Last update <span class="badge attributes"><%= @blog.posts.last.created_at.strftime("%d %b. %Y at %H:%M ") %></span>
+            Last update <span class="badge attributes"><%= Russian.strftime(@blog.posts.last.created_at,"%d %b %Y в %H:%M ") %></span>
             <% end %>
           </div>
           <br><br>
