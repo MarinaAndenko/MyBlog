@@ -6,9 +6,14 @@ class Blog < ActiveRecord::Base
   validates :description, presence: true, length: { minimum: 20 }
 
   def to_param
-  	"#{id}=#{name.tr(" ","-")}"
+  	slug
   end 
-  #extend FriendlyId
-  #friendly_id :name, use: :slugged
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders, :history]
+
+  def should_generate_new_friendly_id?
+  	name_changed?
+	end
 
 end

@@ -33,6 +33,8 @@ group :development do
   gem 'mini_magick'
   gem "paperclip",      "~> 4.3"
   gem 'simple_form'
-  gem 'friendly_id', '~> 5.1.0'
+  gem 'friendly_id'
+  gem 'actionpack-page_caching'
+  gem 'actionpack-action_caching'
 end
 

@@ -2,7 +2,6 @@ class BlogsController < ApplicationController
 	skip_before_action :authenticate_user!, :only => [:index]
 	load_and_authorize_resource
 	require 'will_paginate/array'
-	@@blog_name = nil
 
 	def index
 		@page = params[:page]
@@ -40,11 +39,9 @@ class BlogsController < ApplicationController
 
 	def update
 		@blog = Blog.find(params[:id])
-		#@blog = Blog.find_by_name(@@blog_name) if @blog == nil
 		if @blog.update(blog_params)
 			redirect_to @blog
 		else
-			name_of_blog(params[:name])
 			render 'edit'
 		end
 	end 
@@ -59,8 +56,5 @@ class BlogsController < ApplicationController
 	private
 	def blog_params
 		params.require(:blog).permit( :name, :description)
-	end
-	def name_of_blog(params)
-		@@blog_name = params
 	end
 end

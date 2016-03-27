@@ -34,4 +34,6 @@ Rails.application.configure do
     :domain  => 'sloboda_ap.com'
   }
 
+  config.action_controller.perform_caching = true
+
 end

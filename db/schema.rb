@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317123218) do
+ActiveRecord::Schema.define(version: 20160324195235) do
 
   create_table "blogs", force: :cascade do |t|
-    t.string   "author",      limit: 255
     t.string   "name",        limit: 255
     t.text     "description", limit: 16777215
     t.integer  "user_id",     limit: 4
@@ -51,15 +50,18 @@ ActiveRecord::Schema.define(version: 20160317123218) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-    t.text     "text",        limit: 65535
-    t.integer  "blog_id",     limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "name",          limit: 255
+    t.text     "description",   limit: 65535
+    t.text     "text",          limit: 65535
+    t.integer  "blog_id",       limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "views_counter", limit: 4,     default: 0
+    t.string   "slug",          limit: 255
   end
 
   add_index "posts", ["blog_id"], name: "index_posts_on_blog_id", using: :btree
+  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "",     null: false

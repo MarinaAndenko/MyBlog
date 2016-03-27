@@ -4,7 +4,15 @@ class Post < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 5 }
   validates :description, presence: true, length: { minimum: 20 }
   validates :text, presence: true, length: { minimum: 50 }
+
   def to_param
-  	"#{id}=#{name.tr(" ","-")}"
+  	slug
+  end 
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
+  def should_generate_new_friendly_id?
+  	name_changed? 
   end
 end
