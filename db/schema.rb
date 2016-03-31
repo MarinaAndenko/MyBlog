@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324195235) do
+ActiveRecord::Schema.define(version: 20160331121423) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -50,14 +50,14 @@ ActiveRecord::Schema.define(version: 20160324195235) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "name",          limit: 255
-    t.text     "description",   limit: 65535
-    t.text     "text",          limit: 65535
-    t.integer  "blog_id",       limit: 4
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.integer  "views_counter", limit: 4,     default: 0
-    t.string   "slug",          limit: 255
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.text     "text",        limit: 65535
+    t.integer  "blog_id",     limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "slug",        limit: 255
+    t.integer  "views_count", limit: 4,     default: 0
   end
 
   add_index "posts", ["blog_id"], name: "index_posts_on_blog_id", using: :btree
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 20160324195235) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "views", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "post_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "views", ["post_id"], name: "index_views_on_post_id", using: :btree
+  add_index "views", ["user_id"], name: "index_views_on_user_id", using: :btree
+
   add_foreign_key "blogs", "users"
   add_foreign_key "posts", "blogs"
+  add_foreign_key "views", "posts"
+  add_foreign_key "views", "users"
 end

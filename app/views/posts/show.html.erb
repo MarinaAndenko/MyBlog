@@ -1,12 +1,12 @@
 <div class="my_field">
   <div class="panel panel-primary">
-  <%= cache "post-#{@post.id}" do %>
     <div>
         <h2 class="header-font"><%= @post.name %></h2>
     </div>
       <div class="panel-body">
         <div class="author attributes-f">
         	Author <span class="badge attributes"><%= link_to @post.blog.user.username.capitalize, user_path(@post.blog.user), id: "link-author" %></span>
+          <%= pluralize @post.views.size, 'view' %>
         </div>
 
         <div class="date attributes-f">
@@ -23,7 +23,6 @@
         <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default active" %>
       <% end %>
     </div>
-    <% end %>
   </div>
     <div class="button-center attributes-f">
       <span id = "scroll"><a class = "btn btn-default" href="#comment-form">Leave a comment</a></span>

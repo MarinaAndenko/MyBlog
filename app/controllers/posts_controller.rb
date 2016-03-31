@@ -6,7 +6,25 @@ class PostsController < ApplicationController
 		@commentable = commentable
 		@comment = @commentable.comments.new
 		@comments = @commentable.comments
-		@route = comments_path(post_id: @post.id) 
+		@route = comments_path(post_id: @post.id)
+		if @post.views.where("user_id=#{current_user.id}") == []
+			view = @post.views.new
+			view.user_id = current_user.id
+			view.save
+		end
+		#	Post.update_counters(@post.id, views_count: 1)
+		#	#@views = @post.views.size
+		#else
+		#	view = nil
+		#	render "show"
+		#end
+		#@post.views_count = @post.views.size
+		#if View.where("post_id=#{@post.id} && user_id=#{current_user.id}") == []
+		#	view = @post.views.new
+		#	view.user_id = current_user.id
+		#	view.save
+		#end
+		#@views = View.all.where("post_id=#{@post.id}").size
 	end
 
 	def new

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   has_many :blogs, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :views, dependent: :destroy
+  has_many :posts, through: :views 
   enum role:  
   {
       user: 'user',
