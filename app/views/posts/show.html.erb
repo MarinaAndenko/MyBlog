@@ -1,12 +1,11 @@
 <div class="my_field">
   <div class="panel panel-primary">
     <div>
-        <h2 class="header-font"><%= @post.name %></h2>
+        <h2 class="header-font"><%= @post.name %></h2> <div class = "attributes-f-views" >(<%= pluralize @post.views.size, 'view'%>)</div>
     </div>
       <div class="panel-body">
         <div class="author attributes-f">
         	Author <span class="badge attributes"><%= link_to @post.blog.user.username.capitalize, user_path(@post.blog.user), id: "link-author" %></span>
-          <%= pluralize @post.views.size, 'view' %>
         </div>
 
         <div class="date attributes-f">

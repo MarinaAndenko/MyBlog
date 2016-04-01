@@ -88,6 +88,12 @@
 	font-family: mentone-semibol;
 	font-size: 10pt !important;
 }
+.attributes-f-views
+{
+	font-family: mentone-semibol;
+	font-size: 12pt !important;
+	text-align: center;
+}
 .text-field-full
 {
 	position: relative;
