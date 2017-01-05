@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <%= stylesheet_link_tag    'admin', media: 'all' %>
+	  <title>SlobodaApp</title>
+	</head>
+	<body class = "body">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-default-bg">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="small-menu navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+           <div class="small-menu collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <%= link_to '', blogs_path, id: "font-title", class: "navbar-brand fa fa-diamond fa-2x"  %>
+  <ul class="nav navbar-nav active">
+     <li><%= link_to "Admin Panel", admin_path, id: "menu-font" %></li>
+    <li><%= link_to "Edit users roles", admin_edit_user_role_path, id: "menu-font" %></li>
+    </ul>
+</div>
+    </div>
+  </div>
+  </nav>
+	  <%= yield %>
+	</body>
+</html>

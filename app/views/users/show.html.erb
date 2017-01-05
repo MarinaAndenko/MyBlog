@@ -1,0 +1,57 @@
+<div class="my_field">
+  <div class="panel-body">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title"><span class = "heading-post"> <%= @user.username.capitalize %> profile </span> </h2>
+      </div>
+      <div class = "panel-body text" >
+        <div>
+          <span class = "infograf color-infog" > Information about the user:</span>
+            <div class = "image-field">
+                <%= image_tag @user.avatar_url(:normal), alt: "" %>
+            </div>
+          <% if @user.information == nil || @user.information == "" %>
+            It's no personal information about user yet.<br>
+            <% if current_user.id == @user.id%>
+              Tell others some words about yourself..Start by clicking <%= link_to 'here', edit_user_path, id: "link" %>
+            <% end %>
+          <% else %>
+            <%= @user.information %><br>
+          <% end %>
+        </div>
+        <div class = "infograf color-infog" >
+          <p>
+            Blogs <span class="badge attributes-user"><%= @user.blogs.size if @user.blogs != nil %></span>
+          </p>
+          <p>
+            Posts <span class="badge attributes-user"><%= @q_posts if @user.blogs != nil %></span>
+          </p>
+          <p>
+            Account was created on <span class="badge attributes-user"><%= @user.created_at.strftime("%d %b. %Y") %></span>
+          </p>
+          <p>
+            Last post was publised on <span class="badge attributes-user"><%= @last_post.created_at.strftime("%d %b. %Y at %H:%M") if @last_post != nil %></span>
+          </p>
+        </div>
+        <p>
+          <%= link_to ' To all blogs of this author', blogs_path(user_id: @user.id), class: "btn btn-default" %>
+        </p>
+        <% if current_user.id == @user.id%>
+          <%= link_to 'Edit', edit_user_path, class: "btn btn-default back-font active", id: "delete-comment" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="button-center attributes-f">
+    <span id = "scroll"><a class = "btn btn-default" href="#comment-form">Leave a comment</a></span>
+  </div>
+  <div id="comments-count" class="attributes-f-com"> 
+    <h5>Comments: <%= @commentable.comments.count %></h5>
+  </div>
+  <div id="comments-list">
+    <%= render partial: @commentable.reload.comments.reverse %>
+  </div>
+  <div id = "comment-form" >
+    <%= render 'comments/comment_form'%>
+  </div>
+</div>

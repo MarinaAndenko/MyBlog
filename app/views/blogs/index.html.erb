@@ -1,0 +1,25 @@
+
+<div class="my_field">
+  <% if @blogs == []%>
+  <div class="panel panel-default">
+    <div class="panel-body">
+    <p class = "text">
+    	There's no blogs yet. You can create the first one by directing this <%= link_to "link", new_blog_path, id: "link" %>.
+    </p>
+    </div>
+  </div>
+    <% else %>
+    <% @blogs.each do |blog|%>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= link_to blog.name, blog_path(blog), class: "heading"%>
+        </div>
+        <div>
+        <%= link_to blog.description, blog_path(blog), class: "list-group-item panel-footer text" %>
+        </div>
+        
+      </div>
+    <% end %>
+    <%= will_paginate @blogs, class: "digg_pagination" %>
+  <% end %>
+</div>

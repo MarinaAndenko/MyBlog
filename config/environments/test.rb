@@ -20,4 +20,6 @@ Rails.application.configure do
 
   config.active_support.deprecation = :stderr
 
+  config.action_controller.perform_caching = true
+
 end

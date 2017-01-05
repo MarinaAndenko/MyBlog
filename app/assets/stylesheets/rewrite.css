@@ -1,0 +1,28 @@
+ .navbar-right > li > a
+{
+	color: #a9a9a9 !important;
+}
+ .navbar-right > li > a:hover
+{
+	color: #778899 !important;
+}
+.navbar .brand, .navbar .nav > li > a {
+    color: #00BFFF;
+}
+.navbar .brand, .navbar .nav > li > a:hover {
+    color: #1E90FF;
+}
+ .navbar-brand {
+    color: #00BFFF !important;
+}
+ .navbar-brand:hover {
+    color: #1E90FF !important;
+}
+.navbar-nav
+{
+	color: #00BFFF !important;
+}
+.navbar-default-bg
+{
+	border-color :dimgray !important;
+}

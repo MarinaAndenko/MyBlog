@@ -1,0 +1,29 @@
+<div id="header-font"><h2 class="header-font">Tell others about yourself</h2></div>
+<div class = "back btn btn-default"> 
+  <span class="glyphicon glyphicon-chevron-left back-arr" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
+</div>
+<div class="my_field-input">
+	<br><br>
+	<%= form_for @user, html: { multipart: true }, url: user_path, class: "new_form" do |f| %>
+	  <div class="form-group">
+	    <%= f.text_area :information, class: "form-control", placeholder: "Enter the text here.", rows: 5 %>
+	    <br>
+	    <span class = "" >
+	    	<div class = "image-field-ed">
+	          <%= image_tag @user.avatar.url(:preview), alt: "" %>
+	          <% if @user.avatar.url %> 
+        			<label>Delete photo:</label><%= check_box_tag("remove_avatar", true)%>
+      			<% end %>
+        </div>
+        <br><br>
+        <div>
+		    	<label>Upload the photo to your profile: </label>
+		    	<%= f.file_field :avatar, value: "Choose a file", class: "fileinput"  %>
+		    </div>
+	    </span>
+	  </div>
+	   <div id = "button-center">
+	    <div class="button-center" ><%= f.submit "Save", class: "btn btn-info btn-lg" %></div>
+	  </div>
+	<% end %>
+</div>

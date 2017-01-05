@@ -1,0 +1,38 @@
+<div id="header-font"><h2 class="header-font">Sign in</h2></div>
+<div class="field-center">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<% if alert %>
+  <div class="alert alert-warning alert-block">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+    <p class="text-danger button-center"><%= alert %></p>
+  </div>
+<% elsif notice %>
+  <div class="alert-center alert alert-warning alert-block">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+    <p class="text-danger button-center"><%= notice %></p>
+  </div>
+<% end %>
+  <div class = "input-group input-group-lg">
+    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+  <%= f.text_field :username, autofocus: true, placeholder: "Username", id: "sizing-addon1", class: "form-control"  %>
+  </div>
+  <br>
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+  </div>
+  <br>
+  <div class = "button-center">
+    <div id="button-center" ><%= f.submit "Enter", class: "btn btn-info btn-lg" %>
+    </div>
+    <div class = "forgot" >
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name)%><br />
+      <% end -%>
+      </div>
+  </div>
+
+</div>
+  
+<% end %>
+

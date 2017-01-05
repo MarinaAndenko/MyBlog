@@ -1,0 +1,29 @@
+<div id="header-font"><h2 class="header-font">Edit post</h2></div>
+	<div class = "back"> 
+	  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><%= link_to 'Back', :back, class: "back-font" %>
+	</div>
+	<div class="my_field-input">
+		<%= form_for @post, url: post_path(@post) do |f| %>
+		<%= render 'errors' %>
+		<p>
+			<%= f.label :name, class: "attributes-f"  %><br>
+			<%= f.text_field :name, class: "form-control", id:"exampleInputEmail1" %>
+		</p>
+		<br>
+		<p>
+			<%= f.label :description, class: "attributes-f"  %><br>
+			<%= f.text_area :description, class: "form-control", rows: "5", id: "comment"  %>
+		</p>
+		<br>
+		<p>
+			<%= f.label :text, class: "attributes-f"  %><br>
+			<%= f.text_area :text, class: "form-control", rows: "10", id: "comment"  %>
+		</p>
+		<p>
+			<br>
+		  <div id = "button-center">
+		    <div class="button-center" ><%= f.submit "Create", class: "btn btn-info btn-lg" %></div>
+		  </div>
+		</p>
+		<% end %>
+</div>

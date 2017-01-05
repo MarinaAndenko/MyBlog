@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+<%= render 'form' %>
+<% if current_user.role == "admin" %>
+	<% controller.redirect_to admin_path %>
+<% end %>
+<% end %>

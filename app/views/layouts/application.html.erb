@@ -2,13 +2,29 @@
 <html>
 <head>
   <title>SlobodaApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application'%>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag "jquery" %>
+    <%= stylesheet_link_tag    'rewrite' %>
+    <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body class = "body">
+  <nav class="navbar navbar-default navbar-fixed-top navbar-default-bg">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="small-menu navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to '', blogs_path, id: "font-title", class: "navbar-brand fa fa-diamond fa-2x"  %>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <%= render "shared/navbar" %>
+  </div><!-- /.container-fluid -->
+  </nav>
+  <%= yield %>
 </body>
 </html>

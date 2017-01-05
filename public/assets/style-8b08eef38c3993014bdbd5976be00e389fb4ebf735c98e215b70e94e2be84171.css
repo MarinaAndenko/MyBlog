@@ -1,0 +1,88 @@
+.field-center
+{
+	position: absolute;
+	width: 40%;
+	left: 30%;
+	top: 25%;
+}
+.alert-center
+{
+	width: 40%;
+}
+#button-center
+{
+	position: relative;
+	width: 40%;
+	left: 30%;
+}
+.button-center
+{
+	text-align: center;
+}
+.forgot
+{
+	position: relative;
+	float: right;
+}
+.text-field-full
+{
+	position: relative;
+	height: 100%;
+}
+.header-font
+{
+	text-align: center;
+}
+#header-font
+{
+	position: absolute;
+	height: 10%;
+	width: 100%;
+	top: 12%;
+}
+.my_field
+{
+	position: absolute;
+	width: 100%;
+	top:20%;
+}
+.my_table
+{
+	position: relative;
+	width:90%;
+	left: 5%;
+}
+.table
+{
+	width: 100% !important;
+}
+.paginate
+{
+	float: right;
+	margin-top: 0%;
+	margin-bottom: 0%;
+}
+.b 
+{ 
+    text-indent: 4.5em
+}
+.navbar .brand, .navbar .nav > li > a {
+    color: #00BFFF;
+}
+.navbar .brand, .navbar .nav > li > a:hover {
+    color: #1E90FF;
+}
+ .navbar-brand {
+    color: #00BFFF !important;
+}
+ .navbar-brand:hover {
+    color: #1E90FF !important;
+}
+.navbar-nav
+{
+	color: #00BFFF !important;
+}
+.navbar-default-bg
+{
+	border-color :dimgray !important;
+}

@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    attributes:
+      blog:
+        name: "Имя"
+        description: "Описание"
+      post:
+        name: "Имя"
+        description: "Описание"
+        text: "Текст"

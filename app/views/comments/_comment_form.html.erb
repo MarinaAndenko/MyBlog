@@ -1,0 +1,8 @@
+
+<%= form_for [@commentable, @comment], url: @route, id: "new_form", remote: true do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, id: "commentField",class: "form-control", placeholder: "Enter a comment.", rows: 5 %>
+  </div>
+  <div class="attributes-f button-center"><%= f.submit 'Create', class: "btn btn-primary" %></div>
+<% end %>
+<br>
